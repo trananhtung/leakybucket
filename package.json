@@ -1,5 +1,5 @@
 {
-  "name": "leakybucket",
+  "name": "@billdaddy/leakybucket",
   "version": "0.1.0",
   "description": "Zero-dependency leaky-bucket rate limiter for Node.js and browsers. Enforces a constant throughput rate — no bursts. TypeScript, ESM+CJS, AbortSignal.",
   "type": "module",

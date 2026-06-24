@@ -2,14 +2,14 @@
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
-[![npm](https://img.shields.io/npm/v/leakybucket)](https://www.npmjs.com/package/leakybucket)
+[![npm](https://img.shields.io/npm/v/@billdaddy/leakybucket)](https://www.npmjs.com/package/@billdaddy/leakybucket)
 [![CI](https://github.com/trananhtung/leakybucket/actions/workflows/ci.yml/badge.svg)](https://github.com/trananhtung/leakybucket/actions)
-[![license](https://img.shields.io/npm/l/leakybucket)](LICENSE)
+[![license](https://img.shields.io/npm/l/@billdaddy/leakybucket)](LICENSE)
 
 Zero-dependency leaky-bucket rate limiter for Node.js and browsers. Enforces a **constant throughput rate** — no bursts. TypeScript, ESM + CJS, AbortSignal.
 
 ```bash
-npm install leakybucket
+npm install @billdaddy/leakybucket
 ```
 
 ## Why leaky-bucket?
@@ -29,7 +29,7 @@ Inspired by Go's [`uber-go/ratelimit`](https://github.com/uber-go/ratelimit).
 ## Quick start
 
 ```ts
-import { LeakyBucket } from "leakybucket";
+import { LeakyBucket } from "@billdaddy/leakybucket";
 
 const bucket = new LeakyBucket({ rate: 10 }); // 10 ops/sec → 1 op every 100ms
 
@@ -101,7 +101,7 @@ Reset the internal clock so the next `take()` proceeds immediately. Useful after
 Convenience function for the `new LeakyBucket(...)` constructor.
 
 ```ts
-import { leakyBucket } from "leakybucket";
+import { leakyBucket } from "@billdaddy/leakybucket";
 const bucket = leakyBucket({ rate: 10 });
 ```
 
@@ -110,7 +110,7 @@ const bucket = leakyBucket({ rate: 10 });
 Thrown when `maxQueue` is set and the queue is at capacity.
 
 ```ts
-import { LeakyBucketFullError } from "leakybucket";
+import { LeakyBucketFullError } from "@billdaddy/leakybucket";
 
 try {
   await bucket.take();
@@ -126,7 +126,7 @@ try {
 ### API rate limiting with AbortSignal
 
 ```ts
-import { LeakyBucket } from "leakybucket";
+import { LeakyBucket } from "@billdaddy/leakybucket";
 
 const bucket = new LeakyBucket({ rate: 10, maxQueue: 100 });
 const controller = new AbortController();
@@ -143,7 +143,7 @@ controller.abort();
 ### Wrapping a function
 
 ```ts
-import { LeakyBucket } from "leakybucket";
+import { LeakyBucket } from "@billdaddy/leakybucket";
 
 const bucket = new LeakyBucket({ rate: 5 });
 const limitedSendEmail = bucket.wrap(sendEmail);
@@ -157,7 +157,7 @@ for (const email of emails) {
 ### Monitoring queue depth
 
 ```ts
-import { LeakyBucket } from "leakybucket";
+import { LeakyBucket } from "@billdaddy/leakybucket";
 
 const bucket = new LeakyBucket({ rate: 10 });
 
